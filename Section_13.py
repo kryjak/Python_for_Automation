@@ -31,9 +31,9 @@ sp = subprocess.Popen('ls -lthr', shell=True, stdout=subprocess.PIPE, stderr=sub
 rc = sp.wait()  # Wait for this process to finish
 out, err = sp.communicate()  # A tuple of two value
 print(f'The return code is {rc}')
-print(f'The output is {out}')
+print(f'The output is:\n{out}')
 print(f'The error is {err}')  # No error because the process has executed successfully
-print(f'\nThe output as a list: {out.splitlines()}')  # The output will be converted to a list
+print(f'\nThe output as a list:\n{out.splitlines()}')  # The output will be converted to a list
 
 print("PRACTICE".center(50, "-"))
 # Find the bash version using the subprocess module
