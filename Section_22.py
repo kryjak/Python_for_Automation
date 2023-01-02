@@ -116,5 +116,37 @@ except AttributeError as e:
 
 print("-".center(50, "-"))
 # A small example - addition of complex numbers:
+class Complex:
+    count = 0
+    def __init__(self, real, imag):
+        self.re = real
+        self.im = imag
+        Complex.count += 1  # in this way we can increase a counter every time an instance is created
 
-# class Complex
+    def addition(self, n2):
+        return Complex(self.re + n2.re, self.im + n2.im)  # the return can be an object of the same class
+
+n1 = Complex(3, 4)
+n2 = Complex(5, 2)
+n3 = n1.addition(n2)
+
+print(f'real: {n3.re}')
+print(f'imag: {n3.im}')
+print(f'Created {Complex.count} instances of class Complex.')
+
+print("-".center(50, "-"))
+# Another simple example - a Triangle class to calculate the perimeter of a triangle:
+
+class Triangle:
+    def __init__(self, a, b, c):
+        self.a = a
+        self.b = b
+        self.c = c
+
+    def perimeter(self):
+        return self.a + self.b + self.c
+
+tri1 = Triangle(3, 4, 5)
+perimeter = tri1.perimeter()
+
+print(f'The perimeter of tri1 is {perimeter}')
