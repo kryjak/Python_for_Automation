@@ -4,7 +4,7 @@ Whenever Python encounters an error, it stops. There are:
 1. syntax errors - no way to get around these, need to follow the correct syntax
 2. runtime errors - can be handled using exceptions
 
-Exceptions can be handle using the try-except (-else-finally) block. Examples of exceptions:
+Exceptions can be handled using the try-except (-else-finally) block. Examples of exceptions:
 - IndexError
 - ZeroDivisionError - print(4/0)
 - ImportError
@@ -72,18 +72,8 @@ print("-".center(50, "-"))
 age = 15
 try:
     # Equivalent to: if not age >= 18: raise AssertionError('The subject is not an adult')
-    assert age >= 18, 'Assertion message'
-except AssertionError:
-    print('The subject is not an adult')
-else:
-    print('Adult')
-
-print("-".center(50, "-"))  # this one and the last one are equivalent
-age = 15
-try:
-    # Equivalent to if not age >= 18: raise AssertionError('The subject is not an adult')
     assert age >= 18, 'The subject is not an adult'
-except Exception as e:
+except AssertionError as e:
     print(e)
 else:
     print('Adult')
