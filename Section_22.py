@@ -112,6 +112,10 @@ print('Class attributes vs object attributes:')
 print(f'Bike.price: {Bike.price}')  # class attribute
 print(f'bike1.casette: {bike1.casette}')  # instance attribute
 
+print(bike1.__dict__)  # get the attributes of the object as a dictionary
+print(Bike.__dict__)  # get the attributes of the class as a dictionary
+exit()
+
 try:
 	print(Bike.casette)  # this class attribute does not exist!
 except AttributeError as e:
