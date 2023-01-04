@@ -386,8 +386,10 @@ Note: super() moves up one level, not all the way to the highest superclass.
 # Note that area() is inherited from EquilateralTriangle, not EquilateralTriangle2, because it comes first.
 class EquilateralTriangle3(EquilateralTriangle, EquilateralTriangle2):
 	print('I am an EquilateralTriangle3 object.')
+
 	def perimeter1(self):
 		return super().perimeter()
+
 	def perimeter2(self):
 		return super().old_perimeter()
 
@@ -409,6 +411,45 @@ class EquilateralTriangle3(EquilateralTriangle2, EquilateralTriangle):
 multitri = EquilateralTriangle3([7, 7, 7])
 multitri.area()
 print('__mro__:', EquilateralTriangle3.__mro__)
+
+
+print("-".center(50, "-"))
+"""
+Encapsulation - if we want to make a certain attribute or module 'private', i.e. not accessible from anywhere outside 
+the class, we can do that by preceding the attribute/module name with __.
+Moreover, we can make the attribute/module 'protected', i.e. accessible only within the class + its child classes in 
+case of inheritance by using _ instead:
+"""
+
+class Secret:
+	def __init__(self, lvl, rcp):
+		self.secret = 'This is a secret message.'
+		self.__secrecy_level = lvl  # accessible only within Secret
+		self._recipient = rcp  # accessible within Secret and its subclasses
+
+	def get_secrecy_lvl(self):
+		return self.__secrecy_level
+
+class Recipient(Secret):  # this class doesn't really make sense, but ok, just to demonstrate encapsulation
+	def __init__(self):
+		super().__init__(99, 'CIA')
+
+	def recipient_list(self):
+		return self._recipient
+		# return self.__secrecy_level  # does not work because __secrecy_level is private
+
+sensitive_data = Secret(10, 'NSA')
+recipient = Recipient()
+
+print(sensitive_data.secret)
+# print(sensitive_data.__secrecy_level)  # gives an AttributeError
+print('Secrecy level is:', sensitive_data.get_secrecy_lvl())  # but we can access the attribute from within the class
+# ...unless the method is defined as __print_secrecy_lvl
+# We can also use 'name mangling': instance._classname__secret
+print('Secrecy level is:', sensitive_data._Secret__secrecy_level)
+
+# The child class is able to access the protected attribute, but not private ones
+print('The recipient is:', recipient.recipient_list())
 
 print("-".center(50, "-"))
 print('Now the remaining destructors are called:')
