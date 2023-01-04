@@ -89,10 +89,13 @@ class Bike:
 	price = 'Expensive!'  # The attribute outside the constructor is global to the class
 
 	# The attributes inside the constructor are instance-specific and need to be supplied during instantiation
-	def __init__(self, name="", chnrng=[], cst=[]):  # the arguments do not need to have default values
+	def __init__(self, name="", chnrng=[], cst=None):  # the arguments do not need to have default values
 		self.name = name
 		self.chainring = chnrng  # Note the names on LHS and RHS do not need to be the same
-		self.casette = cst
+		if cst is None:  # mutable data types should not be used for default arguments, use this syntax
+			self.casette = []
+		else:
+			self.casette = cst
 
 	def gear_ratio(self):
 		return round(self.chainring[0] / self.casette[0], 1), round(self.chainring[0] / self.casette[-1], 1)
@@ -114,7 +117,6 @@ print(f'bike1.casette: {bike1.casette}')  # instance attribute
 
 print(bike1.__dict__)  # get the attributes of the object as a dictionary
 print(Bike.__dict__)  # get the attributes of the class as a dictionary
-exit()
 
 try:
 	print(Bike.casette)  # this class attribute does not exist!
