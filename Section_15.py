@@ -63,7 +63,8 @@ for it in my_list:  # That's fine. A new iterator is created from the list, whic
 print("-".center(10, "-"))
 for it in my_list_iterator:
     print(it**2)
-    # At this point, the iterator is exhausted
+# At this point, the iterator is exhausted
+
 print("-".center(4, "-"))
 for it in my_list_iterator:
     print(it**2)  # Nothing is printed
@@ -73,9 +74,10 @@ print("-".center(10, "-"))
 new_iter = iter(my_list)
 for it in new_iter:
     if it == 1:
-        next(new_iter)  # Move the iterator to the next position. Similar to 'skip'
+        next(new_iter)  # Move the iterator to the next position. Similar to 'continue'
     print(it**2)
-    
+
+See Iterators.py for a detailed explanation.    
 """
 
 # Write a new csv file
