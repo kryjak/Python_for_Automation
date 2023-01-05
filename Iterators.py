@@ -30,6 +30,7 @@ but
 When Python enters the loop again, the iterator automatically moves on to the next element, which is 7.
 Therefore, 36 is skipped and the final number printed is 49.
 """
+print("-".center(10, "-"))
 
 for it in my_iterator:
 	if it == 5:
@@ -47,7 +48,7 @@ for it in iter(my_list):  # needed to create a new iterator because my_iterator 
 print("CUSTOM ITERATORS".center(50, "-"))
 # We can also create a custom iterator from scratch:
 
-class PowTwo:
+class MyIterator:
 	def __init__(self, start=0, stop=0, stepsize=1):
 		self.stop = stop
 		self.start = start
@@ -68,19 +69,19 @@ class PowTwo:
 	# pass an argument to __my_next__ to temporarily override the default stepsize
 	# How to set the default value of tmpstepsize to self.stepsize?
 	def __my_next__(self, tmpstepsize=1):
-		if tmpstepsize != self.stepsize:
-			self.stepsize = tmpstepsize
+		# if tmpstepsize != self.stepsize:
+		# 	self.stepsize = tmpstepsize
 
 		if self.n <= self.stop:
-			result = 2 ** self.n
+			result = self.n
 			self.n += self.stepsize
 			return result
 		else:
 			raise StopIteration
 
 
-numbers = PowTwo(3, 10, 1)
-# numbers = PowTwo(3, 10, 2)  # Don't know how to implement cases where stepsize > 1
+numbers = MyIterator(3, 10, 1)
+# numbers = MyIterator(3, 10, 2)  # Don't know how to implement cases where stepsize > 1
 
 iterator = numbers.__my_iter__()
 
@@ -96,7 +97,7 @@ print("INFINITE ITERATORS".center(50, "-"))
 
 from itertools import count
 
-infinite_iterator = itertools.count(1)  # this iterator will never end
+infinite_iterator = itertools.count(0)  # this iterator will never end
 
 for i in range(5):
     print(next(infinite_iterator))
