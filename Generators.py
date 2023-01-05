@@ -36,7 +36,7 @@ for value in my_gen:
 
 print("-".center(10, "-"))
 for value in my_gen:
-	print(value ** 2)  # Nothing is being printed - because my_gen acts like an iterated which it has been used up!
+	print(value ** 2)  # Nothing is being printed - because my_gen acts like an iterator which it has been used up!
 
 
 print("-".center(10, "-"))
