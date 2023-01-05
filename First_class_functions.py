@@ -61,6 +61,7 @@ def logger(msg):
 
 log_hi = logger('Hi!')  # Now, this prints nothing because log_hi is assigned to log_message, not its execution!
 print(type(log_hi))  # log_hi is indeed a function, not its execution!
+print(log_hi.__name__)  # prints log_message
 
 # Therefore, we can call this function at any later time:
 log_hi()  # Now it prints 'Log: Hi!'
