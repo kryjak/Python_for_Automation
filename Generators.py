@@ -71,10 +71,10 @@ The syntax is:
 """
 my_gen = (ii for ii in range(5+1))
 for value in my_gen:
-	print(value ** 3)  # Nothing is being printed - because my_gen acts like an iterated which it has been used up!
+	print(value ** 3)
 
 print("-".center(10, "-"))
 # Or:
 my_gen = (ii ** 3 for ii in range(5+1))
 for value in my_gen:
-	print(value)  # Nothing is being printed - because my_gen acts like an iterated which it has been used up!
+	print(value)
