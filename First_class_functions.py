@@ -32,6 +32,17 @@ numbers = [1, 2, 3, 4, 5]
 
 print(list(map(square, numbers)))  # again, note square, NOT square()
 
+print("-".center(10, "-"))
+# Another example:
+def add(x, y):
+	return x + y
+
+def calculate(func, x, y):
+	return func(x, y)
+
+result = calculate(add, 4, 6)
+print(result)
+
 print("RETURN A FUNCTION FROM A FUNCTION".center(50, "-"))
 # First, consider the following example:
 
