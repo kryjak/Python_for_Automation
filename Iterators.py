@@ -49,7 +49,7 @@ print("CUSTOM ITERATORS".center(50, "-"))
 # We can also create a custom iterator from scratch:
 
 class MyIterator:
-	def __init__(self, start=0, stop=0, stepsize=1):
+	def __init__(self, start=0, stop=1, stepsize=1):
 		self.stop = stop
 		self.start = start
 		self.stepsize = stepsize
@@ -58,36 +58,29 @@ class MyIterator:
 		self.n = self.start
 		return self
 
-	# def current_stepsize(self):
-	# 	return self.stepsize
-
-	# def __my_next__(self, newstepsize=current_stepsize()):
-	# 	if newstepsize != self.stepsize:
-	# 		# self.stepsize = newstepsize
-	# 		pass
-
-	# pass an argument to __my_next__ to temporarily override the default stepsize
-	# How to set the default value of tmpstepsize to self.stepsize?
-	def __my_next__(self, tmpstepsize=1):
-		# if tmpstepsize != self.stepsize:
-		# 	self.stepsize = tmpstepsize
+	# We can't set thisstepsize=self.stepsize - it's a design choice of the language related to the scope of variables
+	# instead we use a thisstepsize=None and if statement
+	def __my_next__(self, thisstepsize=None):
+		if thisstepsize==None:
+			tmpstepsize = self.stepsize
+		else:
+			tmpstepsize = thisstepsize
 
 		if self.n <= self.stop:
 			result = self.n
-			self.n += self.stepsize
+			self.n += tmpstepsize
 			return result
 		else:
 			raise StopIteration
 
 
-numbers = MyIterator(3, 10, 1)
-# numbers = MyIterator(3, 10, 2)  # Don't know how to implement cases where stepsize > 1
+# numbers = MyIterator(3, 10, 1)
+numbers = MyIterator(3, 10, 2)
 
 iterator = numbers.__my_iter__()
 
 print(iterator.__my_next__())  # default is to move one by one
 print(iterator.__my_next__(3))  # move to the third next item (i.e. skip the next two)
-print(iterator.__my_next__())
 print(iterator.__my_next__())
 print(iterator.__my_next__())
 
