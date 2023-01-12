@@ -45,7 +45,7 @@ for item in {'a': 'AAA', 'b': 'BBB'}.items():  # Now it will print the full item
     print(item)
 
 print("-".center(50, "-"))
-for x,y in ([1,2], (3,4), "ab", {'a': 'AAA', 'b': 'BBB'}):  # Multiple variables and mixed types are fine.
+for x, y in ([1, 2], (3, 4), "ab", {'a': 'AAA', 'b': 'BBB'}):  # Multiple variables and mixed types are fine.
     print(x, y)
 
 print("-".center(50, "-"))

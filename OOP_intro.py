@@ -14,13 +14,13 @@ Then, we can create any desired number of objects from that class (known as inst
 
 # Define a class
 class Bike:
-	price = 'Expensive!'
-	name = ""
-	chainring = []
-	casette = []
+    price = 'Expensive!'
+    name = ""
+    chainring = []
+    casette = []
 
-	def gear_ratio(self):
-		return round(self.chainring[0] / self.casette[0], 1), round(self.chainring[0] / self.casette[-1], 1)
+    def gear_ratio(self):
+        return round(self.chainring[0] / self.casette[0], 1), round(self.chainring[0] / self.casette[-1], 1)
 
 
 """
@@ -43,9 +43,9 @@ bike2.chainring = [20]
 bike2.casette = [10, 50]
 
 for bike in [bike1, bike2]:
-	print(f"Name: {bike.name}, Chainring: {bike.chainring}, Casette: {bike.casette} ")  # Attributes
-	print(f"Gear ratio of the {bike.name.lower()} is: {bike.gear_ratio()}")  # Method
-	print(f"This bike is: {bike.price}")  # The attribute that has not been overwritten for each instance
+    print(f"Name: {bike.name}, Chainring: {bike.chainring}, Casette: {bike.casette} ")  # Attributes
+    print(f"Gear ratio of the {bike.name.lower()} is: {bike.gear_ratio()}")  # Method
+    print(f"This bike is: {bike.price}")  # The attribute that has not been overwritten for each instance
 
 print("-".center(50, "-"))
 """
@@ -56,7 +56,8 @@ There are two types of constructors:
 1. default constructor - it does not accept any arguments, only 'self', e.g.:
 	class Bike:
 		def __init__(self):
-			self.say = 'I love bikes!'  # this is a global class value, i.e. self.say is the same for any class instance
+			self.say = 'I love bikes!'  # this is a global class value, i.e. self.say is the same for any class 
+			instance
 		
 		def statement(self):
 			return self.say
@@ -86,19 +87,19 @@ https://www.geeksforgeeks.org/constructors-in-python/
 
 
 class Bike:
-	price = 'Expensive!'  # The attribute outside the constructor is global to the class
+    price = 'Expensive!'  # The attribute outside the constructor is global to the class
 
-	# The attributes inside the constructor are instance-specific and need to be supplied during instantiation
-	def __init__(self, name="", chnrng=[], cst=None):  # the arguments do not need to have default values
-		self.name = name
-		self.chainring = chnrng  # Note the names on LHS and RHS do not need to be the same
-		if cst is None:  # mutable data types should not be used for default arguments, use this syntax
-			self.casette = []
-		else:
-			self.casette = cst
+    # The attributes inside the constructor are instance-specific and need to be supplied during instantiation
+    def __init__(self, name="", chnrng=[], cst=None):  # the arguments do not need to have default values
+        self.name = name
+        self.chainring = chnrng  # Note the names on LHS and RHS do not need to be the same
+        if cst is None:  # mutable data types should not be used for default arguments, use this syntax
+            self.casette = []
+        else:
+            self.casette = cst
 
-	def gear_ratio(self):
-		return round(self.chainring[0] / self.casette[0], 1), round(self.chainring[0] / self.casette[-1], 1)
+    def gear_ratio(self):
+        return round(self.chainring[0] / self.casette[0], 1), round(self.chainring[0] / self.casette[-1], 1)
 
 
 # Instantiation - note we now have to provide the arguments within the constructor:
@@ -106,9 +107,9 @@ bike1 = Bike("Road Bike", [54], [11, 34])
 bike2 = Bike("Mountain Bike", [20], [10, 50])
 
 for bike in [bike1, bike2]:
-	print(f"Name: {bike.name}, Chainring: {bike.chainring}, Casette: {bike.casette} ")
-	print(f"Gear ratio of the {bike.name.lower()} is: {bike.gear_ratio()}")
-	print(f"This bike is: {bike.price}")  # Global to this class
+    print(f"Name: {bike.name}, Chainring: {bike.chainring}, Casette: {bike.casette} ")
+    print(f"Gear ratio of the {bike.name.lower()} is: {bike.gear_ratio()}")
+    print(f"This bike is: {bike.price}")  # Global to this class
 
 print("-".center(50, "-"))
 print('Class attributes vs object attributes:')
@@ -119,24 +120,24 @@ print(bike1.__dict__)  # get the attributes of the object as a dictionary
 print(Bike.__dict__)  # get the attributes of the class as a dictionary
 
 try:
-	print(Bike.casette)  # this class attribute does not exist!
+    print(Bike.casette)  # this class attribute does not exist!
 except AttributeError as e:
-	print(f'Bike.casette: {e}')
+    print(f'Bike.casette: {e}')
 
 print("-".center(50, "-"))
 
 
 # A small example - addition of complex numbers:
 class Complex:
-	count = 0
+    count = 0
 
-	def __init__(self, real, imag):
-		self.re = real
-		self.im = imag
-		Complex.count += 1  # in this way we can increase a counter every time an instance is created
+    def __init__(self, real, imag):
+        self.re = real
+        self.im = imag
+        Complex.count += 1  # in this way we can increase a counter every time an instance is created
 
-	def addition(self, n2):
-		return Complex(self.re + n2.re, self.im + n2.im)  # the return can be an object of the same class
+    def addition(self, n2):
+        return Complex(self.re + n2.re, self.im + n2.im)  # the return can be an object of the same class
 
 
 n1 = Complex(3, 4)
@@ -148,16 +149,19 @@ print(f'imag: {n3.im}')
 print(f'Created {Complex.count} instances of class Complex.')
 
 print("TRIANGLE-".center(50, "-"))
+
+
 # Another simple example - a Triangle class to calculate the perimeter of a triangle:
 
 class Triangle:
-	def __init__(self, sides):
-		self.sides = sides
-		# self.perimeter()  # We can also call the methods at the instantiation stage
+    def __init__(self, sides):
+        self.sides = sides
 
-	def perimeter(self):
-		print('Calculating the perimeter in Triangle.')
-		return sum(self.sides)
+    # self.perimeter()  # We can also call the methods at the instantiation stage
+
+    def perimeter(self):
+        print('Calculating the perimeter in Triangle.')
+        return sum(self.sides)
 
 
 tri1 = Triangle([3, 4, 5])
@@ -186,15 +190,16 @@ The destructor is called whenever the program ends or all references to an objec
 https://pynative.com/python-destructor/
 """
 
+
 class Employee:
 
-	# Constructor
-	def __init__(self):
-		print('Employee created.')
+    # Constructor
+    def __init__(self):
+        print('Employee created.')
 
-	# Destructor
-	def __del__(self):
-		print('Employee destroyed.')
+    # Destructor
+    def __del__(self):
+        print('Employee destroyed.')
 
 
 obj = Employee()
@@ -212,29 +217,31 @@ ob3 = Employee()
 # 2. If there is an exception in __init__()
 
 print("CIRCULAR REFERENCES".center(30, "-"))
+
+
 # Understanding circular references:
 
 class Vehicle:
-	def __init__(self, brand, car):
-		self.brand = brand
-		# saving reference of Car object
-		self.dealer = car
-		print('Vehicle', self.brand, 'created')
+    def __init__(self, brand, car):
+        self.brand = brand
+        # saving reference of Car object
+        self.dealer = car
+        print('Vehicle', self.brand, 'created')
 
-	def __del__(self):
-		print('Vehicle', self.brand, 'destroyed')
+    def __del__(self):
+        print('Vehicle', self.brand, 'destroyed')
 
 
 class Car:
-	def __init__(self, brand):
-		self.brand = brand
-		# saving Vehicle class object in 'dealer' variable
-		# Sending reference of Car object ('self') for Vehicle object
-		self.dealer = Vehicle(brand, self)
-		print('Car', self.brand, 'created')
+    def __init__(self, brand):
+        self.brand = brand
+        # saving Vehicle class object in 'dealer' variable
+        # Sending reference of Car object ('self') for Vehicle object
+        self.dealer = Vehicle(brand, self)
+        print('Car', self.brand, 'created')
 
-	def __del__(self):
-		print('Car', self.brand, 'destroyed')
+    def __del__(self):
+        print('Car', self.brand, 'destroyed')
 
 
 bmw = Car('BMW')
@@ -250,24 +257,25 @@ del bmw  # the destructor should execute now, but nothing is happening
 print('Did not destroy Car class object.')
 print('Will be destroyed at end of program.')
 
-
 print("ERROR IN __init__()".center(30, "-"))
+
+
 # Error in __init__():
 class Car:
-	def __init__(self, brand):
-		try:
-			assert brand != 'BMW', 'Too expensive!'
-		except AssertionError as e:
-			print('AssertionError:', e)
-		finally:
-			self.brand = brand
+    def __init__(self, brand):
+        try:
+            assert brand != 'BMW', 'Too expensive!'
+        except AssertionError as e:
+            print('AssertionError:', e)
+        finally:
+            self.brand = brand
 
-	def __del__(self):
-		print('Car', self.brand, 'destroyed')
+    def __del__(self):
+        print('Car', self.brand, 'destroyed')
+
 
 bmw = Car('BMW')
 del bmw  # nothing happens unless we uncomment the except line above
-
 
 print("-".center(50, "-"))
 print('Now the remaining destructors are called:')

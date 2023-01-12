@@ -4,6 +4,7 @@ It's a commonly used format to transfer data between a server and a web applicat
 """
 
 import json
+
 # print(help(json))
 
 req_file = "/home/jkrys/Desktop/Programming/Python for Automation/Exercises/jsondata.json"

@@ -11,8 +11,10 @@ https://www.programiz.com/python-programming/methods/built-in/map
 
 numbers = range(11)
 
+
 def square(n):  # Create the test condition
-	return n ** 2
+    return n ** 2
+
 
 square_iterator = map(square, numbers)  # returns an iterator
 square_list = list(square_iterator)  # convert iterator to a list

@@ -33,45 +33,47 @@ Therefore, 36 is skipped and the final number printed is 49.
 print("-".center(10, "-"))
 
 for it in my_iterator:
-	if it == 5:
-		print(next(my_iterator))
-	print(it**2)
+    if it == 5:
+        print(next(my_iterator))
+    print(it ** 2)
 
 print("-".center(10, "-"))
 # Note that this is equivalent to using 'continue', but shifted one element further:
 for it in iter(my_list):  # needed to create a new iterator because my_iterator at this point is exhausted!
-	if it == 6:
-		print(it)
-		continue
-	print(it**2)
+    if it == 6:
+        print(it)
+        continue
+    print(it ** 2)
 
 print("CUSTOM ITERATORS".center(50, "-"))
+
+
 # We can also create a custom iterator from scratch:
 
 class MyIterator:
-	def __init__(self, start=0, stop=1, stepsize=1):
-		self.stop = stop
-		self.start = start
-		self.stepsize = stepsize
+    def __init__(self, start=0, stop=1, stepsize=1):
+        self.stop = stop
+        self.start = start
+        self.stepsize = stepsize
 
-	def __my_iter__(self):
-		self.n = self.start
-		return self
+    def __my_iter__(self):
+        self.n = self.start
+        return self
 
-	# We can't set thisstepsize=self.stepsize - it's a design choice of the language related to the scope of variables
-	# instead we use a thisstepsize=None and if statement
-	def __my_next__(self, thisstepsize=None):
-		if thisstepsize==None:
-			tmpstepsize = self.stepsize
-		else:
-			tmpstepsize = thisstepsize
+    # We can't set thisstepsize=self.stepsize - it's a design choice of the language related to the scope of variables
+    # instead we use a thisstepsize=None and if statement
+    def __my_next__(self, thisstepsize=None):
+        if thisstepsize == None:
+            tmpstepsize = self.stepsize
+        else:
+            tmpstepsize = thisstepsize
 
-		if self.n <= self.stop:
-			result = self.n
-			self.n += tmpstepsize
-			return result
-		else:
-			raise StopIteration
+        if self.n <= self.stop:
+            result = self.n
+            self.n += tmpstepsize
+            return result
+        else:
+            raise StopIteration
 
 
 # numbers = MyIterator(3, 10, 1)
@@ -83,7 +85,6 @@ print(iterator.__my_next__())  # default is to move one by one
 print(iterator.__my_next__(3))  # move to the third next item (i.e. skip the next two)
 print(iterator.__my_next__())
 print(iterator.__my_next__())
-
 
 print("INFINITE ITERATORS".center(50, "-"))
 # We can also create an infinite operator using a function that increments by 1 every time it is called

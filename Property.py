@@ -15,24 +15,25 @@ But their name must be different to the attribute instantiated by __init__.
 https://stackoverflow.com/a/17395735
 """
 
+
 class Student:
-	def __init__(self, name, surname):
-		self.name = name
-		self.surname = surname
-		self.fullname = name + ' ' + surname
-		"""
-		Note: even if we use:
-		self.fullname = self.name + ' ' + self.surname
-		it still won't help us, because the attribute self.fullname is defined once, during instantiation
-		We'd still have to change it manually apart from changing self.name.
-		"""
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
+        self.fullname = name + ' ' + surname
+        """
+        Note: even if we use:
+        self.fullname = self.name + ' ' + self.surname
+        it still won't help us, because the attribute self.fullname is defined once, during instantiation
+        We'd still have to change it manually apart from changing self.name.
+        """
 
-	def get_fullname(self):  # a traditional method to access the name
-		return self.name + ' ' + self.surname
+    def get_fullname(self):  # a traditional method to access the name
+        return self.name + ' ' + self.surname
 
-	def set_name_and_fullname(self, value):  # a traditional method to modify the name
-		self.name = value
-		self.fullname = value + ' ' + self.surname
+    def set_name_and_fullname(self, value):  # a traditional method to modify the name
+        self.name = value
+        self.fullname = value + ' ' + self.surname
 
 
 student = Student('Monica', 'Smith')
@@ -82,26 +83,30 @@ For that purpose, we use a @property decorator.
 """
 
 print("-".center(50, "-"))
+
+
 class Student:
-	def __init__(self, name, surname):
-		self.name = name
-		self.surname = surname
-		# deleted the attribute we want to control with @property
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
 
-	# Note: the name of the method decorated by @property cannot be the same as the attribute it refers to!
-	@property  # a getter
-	def fullname(self):
-		return self.name + ' ' + self.surname
+    # deleted the attribute we want to control with @property
 
-	@fullname.setter  # a setter - note the name is the same as defined under @property above!
-	def fullname(self, value):
-		self.name, self.surname = value.split(' ')
+    # Note: the name of the method decorated by @property cannot be the same as the attribute it refers to!
+    @property  # a getter
+    def fullname(self):
+        return self.name + ' ' + self.surname
 
-	@fullname.deleter  # a deleter - note the name is the same as defined under @property above!
-	def fullname(self):
-		print('Deleting name!')
-		self.name, self.surname = None, None
-		# del self.name
+    @fullname.setter  # a setter - note the name is the same as defined under @property above!
+    def fullname(self, value):
+        self.name, self.surname = value.split(' ')
+
+    @fullname.deleter  # a deleter - note the name is the same as defined under @property above!
+    def fullname(self):
+        print('Deleting name!')
+        self.name, self.surname = None, None
+    # del self.name
+
 
 # create a new Student object
 student = Student("Mark", "Corrigan")

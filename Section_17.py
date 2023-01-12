@@ -42,7 +42,7 @@ try:
         raise ValueError("please add money in your account")  # raise the ValueError
     else:
         print("Valid amount")
-    res = amount/0
+    res = amount / 0
 
 except ValueError as e:
     print('Encountered an error:', e)
@@ -55,7 +55,6 @@ else:
     print('Process finished successfully')
 finally:
     print('This will be printed regardless if there is an exception or not')
-
 
 print("-".center(50, "-"))
 # We can also raise an error elsewhere, e.g. in an 'if' statement

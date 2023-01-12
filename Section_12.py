@@ -92,6 +92,6 @@ else:
             timestamp = os.path.getctime(fullpath)
             creation_time = datetime.datetime.fromtimestamp(timestamp)
             print((time_now - creation_time))
-            file_age = (time_now-creation_time).days
+            file_age = (time_now - creation_time).days
             if file_age >= req_age:
                 print(f"{item} is {file_age} old")

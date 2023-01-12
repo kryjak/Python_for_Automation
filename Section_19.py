@@ -60,7 +60,8 @@ print('\'.\':', re.findall('.', my_string))  # any character
 print('\'..\':', re.findall('..', my_string))
 print('\'...\':', re.findall('...', my_string))
 
-print('\'^m[a-i]\':', re.findall('^m[a-i]', my_string))  # at the start of the string (or start of line in multiline strings)
+print('\'^m[a-i]\':',
+      re.findall('^m[a-i]', my_string))  # at the start of the string (or start of line in multiline strings)
 print('\'te$\':', re.findall('te$', my_string))  # note the 'te' from the first 'mate' is not matched, only from 'm@te'
 
 print("-".center(50, "-"))
@@ -70,7 +71,8 @@ print(foo_string)
 print('\'\\\\bfoo\':', re.findall('\\bfoo', foo_string))
 print('\'\\\\Bfoo\':', re.findall('\\Bfoo', foo_string))
 # why the double backlash? Because \b has a special meaning - it's the backspace character. See:
-# https://stackoverflow.com/questions/50496846/why-are-double-backslashes-for-word-boundary-regular-expressions-but-single-bac
+# https://stackoverflow.com/questions/50496846/why-are-double-backslashes-for-word-boundary-regular-expressions-but
+# -single-bac
 # https://stackoverflow.com/questions/33582162/confused-about-backslashes-in-regular-expressions?noredirect=1&lq=1
 
 # We can also use 'raw strings':
@@ -157,7 +159,7 @@ matches = re.finditer('tHiS', new_string, re.I)
 print('matches of finditer():', matches)
 
 for match in matches:
-	print(match)
+    print(match)
 
 print("-".center(50, "-"))
 split_string = re.split(r'\bis\b', new_string, maxsplit=2)  # maxsplit sets the number of times the string is split

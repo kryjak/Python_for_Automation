@@ -15,7 +15,7 @@ print("This is my first Python script.")
 if 3 > 1:
     print("First print statement")  # This is fine, but 'else' has to be aligned with 'if'
 else:
-  print("Another print statement")
+    print("Another print statement")
 
 # Note how PyCharm is giving us a warning:
 # "Line 10 is unreachable."

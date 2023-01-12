@@ -1,4 +1,5 @@
-# https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other-sequential-types/
+# https://railsware.com/blog/python-for-machine-learning-indexing-and-slicing-for-lists-tuples-strings-and-other
+# -sequential-types/
 
 # In Python, indexing starts from 0 !!!
 # But backward indexing starts from -1
@@ -36,17 +37,27 @@ print('Now num changes as well!', num)
 
 print("-".center(50, "-"))
 # Note the difference: [i] replaces position i, [i:j] replaces positions i to j
-num = [10, 20, 30, 40, 50, 60, 70, 80, 90]; num[0]   = ["XXX", "YYY", "ZZZ"]; print('num:', num)
-num = [10, 20, 30, 40, 50, 60, 70, 80, 90]; num[0:1] = ["XXX", "YYY", "ZZZ"]; print('num:', num)
+num = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+num[0] = ["XXX", "YYY", "ZZZ"];
+print('num:', num)
+num = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+num[0:1] = ["XXX", "YYY", "ZZZ"];
+print('num:', num)
 # Note the different syntax when trying to do the same, but at the end:
-num = [10, 20, 30, 40, 50, 60, 70, 80, 90]; num[-1]    = ["XXX", "YYY", "ZZZ"]; print('num:', num)
-num = [10, 20, 30, 40, 50, 60, 70, 80, 90]; num[-1:] = ["XXX", "YYY", "ZZZ"]; print('num:', num)
+num = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+num[-1] = ["XXX", "YYY", "ZZZ"];
+print('num:', num)
+num = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+num[-1:] = ["XXX", "YYY", "ZZZ"];
+print('num:', num)
 # Because slicing from the end starts at -1, not 0 (as -0 = 0, so the interpreter would get confused),
 # We need to select: -1 as the starting element and slice until the end, that is -1:
 # Doing -2:-1 will actually be select the -2 element
 # num = [10, 20, 30, 40, 50, 60, 70, 80, 90]; num[-1:-2:-1] = ["XXX", "YYY", "ZZZ"]; print('num:', num)  # doesn't work
 # We can also do:
-num = [10, 20, 30, 40, 50, 60, 70, 80, 90]; num = num[:-1] + ["XXX", "YYY", "ZZZ"]; print('num:', num)
+num = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+num = num[:-1] + ["XXX", "YYY", "ZZZ"];
+print('num:', num)
 
 del num[-1]
 print('num with deleted last element:', num)
@@ -55,7 +66,8 @@ print("-".center(50, "-"))
 # Strings are immutable, so if we try to delete/change a part of the string like string[0] = "new_string", we'll get:
 # TypeError: 'str' object does not support item assignment
 # To get around this, we can do:
-string = string[:5] + "XXX" + string[5:]; print('string =', string)
+string = string[:5] + "XXX" + string[5:];
+print('string =', string)
 # And to replace a particular character use 'replace':
 print('string with X->Y:', string.replace("X", "Y"))
 

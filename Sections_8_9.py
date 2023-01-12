@@ -78,9 +78,9 @@ Note the errors: this code should be run from the terminal, not an IDE
 # when running from the terminal, use command line arguments:
 # python3 Section_8.py "sTriNg" upper
 
-if len(sys.argv)-1 != 2:
+if len(sys.argv) - 1 != 2:
     print(f"sys.argv: {sys.argv}")
-    print(f"Incorrect length of command line arguments: {len(sys.argv)-1}")
+    print(f"Incorrect length of command line arguments: {len(sys.argv) - 1}")
     sys.exit()
 
 my_str = sys.argv[1]

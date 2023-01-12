@@ -15,10 +15,12 @@ def my_function(cmd1, cmd2):
     time.sleep(2)
     os.system(cmd2)
 
+
 # my_function('clear', 'ls')
 
 # Another example - a function with no arguments:
 print("-".center(50, "-"))
+
 
 def printing():
     print('this is a test')
@@ -33,17 +35,22 @@ print(ret)
 # the outer function is called
 print("-".center(50, "-"))
 
+
 def my_cube(n):
-    return my_square(n)*n
+    return my_square(n) * n
+
 
 def my_square(n):
-    return n*n
+    return n * n
+
 
 print(my_cube(4))
 
 # Local and global variables:
 print("-".center(50, "-"))
 x = 10
+
+
 def define_x():
     x = 4
     print(x)
@@ -55,6 +62,8 @@ print(x)  # Global x
 # We can also declare a variable as global
 print("-".center(50, "-"))
 x = 10
+
+
 def define_x():
     global x
     x = 4
@@ -84,8 +93,11 @@ https://pynative.com/python-function-arguments/
 
 # We can specify default values of the arguments:
 print("-".center(50, "-"))
+
+
 def fun(x=10, y=7):
-    return x*y
+    return x * y
+
 
 print(fun(3, 4))
 print(fun())
@@ -95,8 +107,10 @@ print(fun())
 # Otherwise, Python would not know how to understand the order of arguments when this function is called
 print("-".center(50, "-"))
 
+
 def fun(y, x=10):
-    return x*y
+    return x * y
+
 
 print(fun(3, 4))
 print(fun(7))
@@ -104,9 +118,12 @@ print(fun(7))
 # Keywords allow us to specify the values of arguments even if they are not in the order specified when defining the
 # function
 print("-".center(50, "-"))
+
+
 def fun(a, b, c, d):
     print(f'a is {a}, b is {b}, c is {c}, d is {d}')
     return None
+
 
 fun(5, 10, 15, 20)
 fun(10, 5, 15, 20)  # These are passed as positional arguments
@@ -117,17 +134,22 @@ fun(5, 10, c=15, d=20)  # Keyword arguments have to be at the end
 fun(5, 10, d=20, c=15)  # But their order does not matter
 
 print("-".center(50, "-"))
+
+
 # Arbitrary positional arguments:
 def my_avg(*args):
     sum = 0
     for number in args:
         sum = sum + number
-    return sum/len(args)
+    return sum / len(args)
+
 
 print(my_avg(1, 2, 3))
 print(my_avg(1, 2, 3, 4, 5))
 
 print("-".center(50, "-"))
+
+
 # Arbitrary keyword arguments are passed and accessed like a dictionary
 def percentage(**kwargs):
     for sub in kwargs:
@@ -135,12 +157,14 @@ def percentage(**kwargs):
         sub_marks = kwargs[sub]  # To get the value, we need to do dict[key]
         print(sub_name, "=", sub_marks)
 
+
 percentage(math=56, english=61, chemistry=73)  # This can be extended arbitrarily
 percentage(math=56, english=61, chemistry=73, physics=100, art=11)
 
 print("-".center(50, "-"))
 # We can also import functions from a different script:
 import functions_18 as extra  # without .py extension
+
 # No print statement from not_needed() at this stage!
 print(f'__name__ in Section_18.py = {__name__}')
 # __name__ is a predefined variable equal to the name of the script

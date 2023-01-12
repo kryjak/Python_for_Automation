@@ -11,8 +11,10 @@ https://www.youtube.com/watch?v=kr0mpwqttM0&ab_channel=CoreySchafer
 
 print("ASSIGN A FUNCTION TO A VARIABLE".center(50, "-"))
 
+
 def square(n):
-	return n * n
+    return n * n
+
 
 f = square(5)  # This is NOT what we mean above - this is assigning the result of a function to a variable
 
@@ -33,24 +35,31 @@ numbers = [1, 2, 3, 4, 5]
 print(list(map(square, numbers)))  # again, note square, NOT square()
 
 print("-".center(10, "-"))
+
+
 # Another example:
 def add(x, y):
-	return x + y
+    return x + y
+
 
 def calculate(func, x, y):
-	return func(x, y)
+    return func(x, y)
+
 
 result = calculate(add, 4, 6)
 print(result)
 
 print("RETURN A FUNCTION FROM A FUNCTION".center(50, "-"))
+
+
 # First, consider the following example:
 
 def logger(msg):
-	def log_message():
-		print('Log:', msg)
+    def log_message():
+        print('Log:', msg)
 
-	return log_message()
+    return log_message()
+
 
 log_hi = logger('Hi!')  # prints 'Log: Hi!' because log_hi is assigned to the execution: log_message()
 print(type(log_hi))
@@ -64,11 +73,14 @@ return log_message
 instead of:
 return log_message()
 """
-def logger(msg):
-	def log_message():
-		print('Log:', msg)
 
-	return log_message
+
+def logger(msg):
+    def log_message():
+        print('Log:', msg)
+
+    return log_message
+
 
 log_hi = logger('Hi!')  # Now, this prints nothing because log_hi is assigned to log_message, not its execution!
 print(type(log_hi))  # log_hi is indeed a function, not its execution!
@@ -85,11 +97,13 @@ This is an example of a 'closure'.
 Let's see how this can be useful:
 """
 
-def html_tag(tag):
-	def wrap_text(msg):
-		print(f'<{tag}>{msg}<>{tag}')
 
-	return wrap_text
+def html_tag(tag):
+    def wrap_text(msg):
+        print(f'<{tag}>{msg}<>{tag}')
+
+    return wrap_text
+
 
 print_h1 = html_tag('h1')
 print_h1('Test headline')

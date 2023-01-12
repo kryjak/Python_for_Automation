@@ -1,14 +1,17 @@
 print("TRIANGLE-".center(50, "-"))
+
+
 # Another simple example - a Triangle class to calculate the perimeter of a triangle:
 
 class Triangle:
-	def __init__(self, sides):
-		self.sides = sides
-	# self.perimeter()  # We can also call the methods at the instantiation stage
+    def __init__(self, sides):
+        self.sides = sides
 
-	def perimeter(self):
-		print('Calculating the perimeter in Triangle.')
-		return sum(self.sides)
+    # self.perimeter()  # We can also call the methods at the instantiation stage
+
+    def perimeter(self):
+        print('Calculating the perimeter in Triangle.')
+        return sum(self.sides)
 
 
 tri1 = Triangle([3, 4, 5])
@@ -23,18 +26,20 @@ Python knows that tri1.perimeter() is different to square1.perimeter() - we say 
 Btw, in PyCharm we can click Shift+F11 to view the bookmarks, Ctrl+B to jump to object definition, Shift+Ctrl+B to 
 jump to class definition.
 """
-class Square:
-	def __init__(self, a):
-		self.a = a
 
-	def perimeter(self):
-		return 4 * self.a
+
+class Square:
+    def __init__(self, a):
+        self.a = a
+
+    def perimeter(self):
+        return 4 * self.a
+
 
 square1 = Square(3)
 perimeter = square1.perimeter()
 
 print(f'The perimeter of square1 is {perimeter}.')
-
 
 print("INHERITANCE".center(50, "-"))
 """
@@ -47,10 +52,12 @@ https://www.programiz.com/python-programming/inheritance
 """
 import math  # to have sqrt below
 
+
 class EquilateralTriangle(Triangle):
-	def area(self):
-		print('Calculating area in EquilateralTriangle')
-		return round(self.sides[0] ** 2 * math.sqrt(3) / 4, 5)
+    def area(self):
+        print('Calculating area in EquilateralTriangle')
+        return round(self.sides[0] ** 2 * math.sqrt(3) / 4, 5)
+
 
 equitri = EquilateralTriangle([7, 7, 7])
 perimeter = equitri.perimeter()
@@ -71,18 +78,21 @@ The super() builtin method returns a proxy object (temporary object of the super
 methods of the base class.
 https://www.programiz.com/python-programming/methods/built-in/super
 """
+
+
 class EquilateralTriangle2(Triangle):
-	# overrides perimeter() from the Triangle parent class
-	def perimeter(self):
-		print('I am now using the 3*a perimeter formula in EquilateralTriangle2.')
-		return 3 * self.sides[0]
+    # overrides perimeter() from the Triangle parent class
+    def perimeter(self):
+        print('I am now using the 3*a perimeter formula in EquilateralTriangle2.')
+        return 3 * self.sides[0]
 
-	def old_perimeter(self):
-		return super().perimeter()  # access the method of the parent class
+    def old_perimeter(self):
+        return super().perimeter()  # access the method of the parent class
 
-	def area(self):
-		print('Calculating area in EquilateralTriangle2')
-		return round(self.sides[0] ** 2 * math.sqrt(3) / 4, 5)
+    def area(self):
+        print('Calculating area in EquilateralTriangle2')
+        return round(self.sides[0] ** 2 * math.sqrt(3) / 4, 5)
+
 
 equitri = EquilateralTriangle2([7, 7, 7])
 perimeter = equitri.perimeter()  # now the updated formula is being used
@@ -106,13 +116,16 @@ of the object class.
 https://www.programiz.com/python-programming/multiple-inheritance
 """
 
+
 class Polygon:
-	def statement(self):
-		print('I am a polygon.')
+    def statement(self):
+        print('I am a polygon.')
+
 
 # this child class inherits __init__() and perimeter() from Triangle, as well as statement() from Polygon:
 class EquilateralTriangle3(Triangle, Polygon):
-	print('I am an EquilateralTriangle3 object.')
+    print('I am an EquilateralTriangle3 object.')
+
 
 multitri = EquilateralTriangle3([7, 7, 7])
 multitri.statement()
@@ -128,16 +141,19 @@ Normal method overriding rules described above apply.
 In the examples below, both EquilateralTriangle and EquilateralTriangle2 are children of Triangle.  
 Note: super() moves up one level, not all the way to the highest superclass.
 """
+
+
 # this child class inherits __init__() from Triangle, but perimeter() is overridden by the one in EquilateralTriangle2
 # Note that area() is inherited from EquilateralTriangle, not EquilateralTriangle2, because it comes first.
 class EquilateralTriangle3(EquilateralTriangle, EquilateralTriangle2):
-	print('I am an EquilateralTriangle3 object.')
+    print('I am an EquilateralTriangle3 object.')
 
-	def perimeter1(self):
-		return super().perimeter()
+    def perimeter1(self):
+        return super().perimeter()
 
-	def perimeter2(self):
-		return super().old_perimeter()
+    def perimeter2(self):
+        return super().old_perimeter()
+
 
 multitri = EquilateralTriangle3([7, 7, 7])
 multitri.perimeter()  # inherited from EquilateralTriangle2
@@ -151,12 +167,14 @@ print('__mro__:', EquilateralTriangle3.__mro__)
 
 # Same as above, but now area is inherited from EquilateralTriangle2
 print("-".center(10, "-"))
+
+
 class EquilateralTriangle3(EquilateralTriangle2, EquilateralTriangle):
-	print('I am an EquilateralTriangle3 object.')
+    print('I am an EquilateralTriangle3 object.')
+
 
 multitri = EquilateralTriangle3([7, 7, 7])
 multitri.area()
 print('__mro__:', EquilateralTriangle3.__mro__)
-
 
 print("-".center(50, "-"))

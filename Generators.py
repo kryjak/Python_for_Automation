@@ -13,31 +13,35 @@ be iterated over at a later time.
 'yield' produces a value but then pauses the execution until the next value is requested.
 """
 
+
 def fun(n):
-	i = 0
-	while i <= n:
-		print(i)
-		i += 1
+    i = 0
+    while i <= n:
+        print(i)
+        i += 1
+
 
 fun(5)
 
 # Now do the same using a generator:
 print("-".center(10, "-"))
+
+
 def generator(n):
-	i = 0
-	while i <= n:
-		yield i
-		i += 1
+    i = 0
+    while i <= n:
+        yield i
+        i += 1
+
 
 my_gen = generator(5)
 print(type(my_gen))
 for value in my_gen:
-	print(value)
+    print(value)
 
 print("-".center(10, "-"))
 for value in my_gen:
-	print(value ** 2)  # Nothing is being printed - because my_gen acts like an iterator which it has been used up!
-
+    print(value ** 2)  # Nothing is being printed - because my_gen acts like an iterator which it has been used up!
 
 print("-".center(10, "-"))
 # Just like a normal iterator, we can apply next() to it
@@ -52,9 +56,11 @@ Just like we can create an infinite iterator (e.g. using itertools.count(n), whe
 create an infinite generator:
 """
 
+
 def infinite_generator():
-	while True:
-		yield 0
+    while True:
+        yield 0
+
 
 inf_gen = infinite_generator()
 print(next(inf_gen))
@@ -69,12 +75,12 @@ This shortcut is similar to list comprehension, but instead of a list, it create
 The syntax is:
 (expression for ii in iterable)
 """
-my_gen = (ii for ii in range(5+1))
+my_gen = (ii for ii in range(5 + 1))
 for value in my_gen:
-	print(value ** 3)
+    print(value ** 3)
 
 print("-".center(10, "-"))
 # Or:
-my_gen = (ii ** 3 for ii in range(5+1))
+my_gen = (ii ** 3 for ii in range(5 + 1))
 for value in my_gen:
-	print(value)
+    print(value)

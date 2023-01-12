@@ -14,7 +14,7 @@ https://www.programiz.com/python-programming/list-comprehension
 squares = []
 
 for ii in range(1, 6):
-	squares.append(ii ** 2)
+    squares.append(ii ** 2)
 
 print(squares)
 
@@ -75,11 +75,11 @@ matrix = [[1, 2, 3, 4], [4, 5, 6, 8]]
 
 # this is how a transpose of a matrix is calculated using a proper for loop:
 for i in range(len(matrix[0])):
-	transposed_row = []
+    transposed_row = []
 
-	for row in matrix:
-		transposed_row.append(row[i])
-	transposed.append(transposed_row)
+    for row in matrix:
+        transposed_row.append(row[i])
+    transposed.append(transposed_row)
 
 print(transposed)
 

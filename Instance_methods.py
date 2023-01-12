@@ -19,33 +19,37 @@ https://pynative.com/python-instance-methods/#h-create-instance-variables-in-ins
 """
 
 print("INSTANCE METHODS".center(50, "-"))
+
+
 class Student:
-	subject = 'Physics'  # class attribute
+    subject = 'Physics'  # class attribute
 
-	def __init__(self, name, age):
-		# Instance variable
-		self.score = None
-		self.name = name
-		self.age = age
+    def __init__(self, name, age):
+        # Instance variable
+        self.score = None
+        self.name = name
+        self.age = age
 
-	# instance method to access instance variable
-	def show(self):
-		print('Name:', self.name, '\b,', 'Age:', self.age)
+    # instance method to access instance variable
+    def show(self):
+        print('Name:', self.name, '\b,', 'Age:', self.age)
 
-	# instance method to modify INSTANCE variable
-	def update(self, age, subject):
-		self.age = age
-		self.subject = subject
+    # instance method to modify INSTANCE variable
+    def update(self, age, subject):
+        self.age = age
+        self.subject = subject
 
-	# instance method to modify CLASS variable
-	def update2(self, subject):
-		# subject = subject  # this will NOT modify the class attribute 'subject' - it treats 'subject' as a local var
-		# Student.subject = subject  # this will
-		self.__class__.subject = subject  # this will as well
+    # instance method to modify CLASS variable
+    # or use a classmethod - see Class_methods.py
+    def update2(self, subject):
+        # subject = subject  # this will NOT modify the class attribute 'subject' - it treats 'subject' as a local var
+        # Student.subject = subject  # this will
+        self.__class__.subject = subject  # this will as well
 
-	# instance method to add instance variable
-	def add_marks(self, marks):
-		self.marks = marks
+    # instance method to add instance variable
+    def add_marks(self, marks):
+        self.marks = marks
+
 
 mary = Student('Mary', 22)
 
@@ -81,10 +85,13 @@ setattr(mary, 'age', 50)  # setattr can also modify the existing attribute, equi
 print('instance age:', mary.age)
 
 print("-".center(10, "-"))
+
+
 # We can dynamically create a method associated with an object:
 
 def inst_method(self):
-	print('This method is associated with the instance.')
+    print('This method is associated with the instance.')
+
 
 mary.instance_method = types.MethodType(inst_method, mary)  # note the syntax - method is tied to 'mary' object
 mary.instance_method()

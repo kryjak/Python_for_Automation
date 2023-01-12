@@ -15,23 +15,26 @@ replaced with _ChildClass__var.
 But we can easily access even such private variable on the outside, using the mangled name: _ClassName__var.
 """
 
-class Secret:
-	def __init__(self, lvl, rcp):
-		self.secret = 'This is a secret message.'
-		self.__secrecy_level = lvl  # accessible only within Secret
-		self._recipient = 'The recipient is ' + rcp  # accessible within Secret and its subclasses
 
-	def get_secrecy_lvl(self):
-		return 'The secrecy level is ' + str(self.__secrecy_level)
+class Secret:
+    def __init__(self, lvl, rcp):
+        self.secret = 'This is a secret message.'
+        self.__secrecy_level = lvl  # accessible only within Secret
+        self._recipient = 'The recipient is ' + rcp  # accessible within Secret and its subclasses
+
+    def get_secrecy_lvl(self):
+        return 'The secrecy level is ' + str(self.__secrecy_level)
+
 
 class Recipient(Secret):  # this class doesn't really make sense, but ok, just to demonstrate encapsulation
-	def __init__(self, lvl, rcp):
-		super().__init__(lvl, rcp)
+    def __init__(self, lvl, rcp):
+        super().__init__(lvl, rcp)
 
-	def recipient_list(self):
-		return self._recipient
-	# return self.__secrecy_level  # does not work
-	# return self._Secret__secrecy_level  # works because we have used the mangled name of the private var
+    def recipient_list(self):
+        return self._recipient
+# return self.__secrecy_level  # does not work
+# return self._Secret__secrecy_level  # works because we have used the mangled name of the private var
+
 
 sensitive_data = Secret(10, 'NSA')
 recipient = Recipient(99, 'CIA')
@@ -58,19 +61,21 @@ print(sensitive_data._recipient)
 Getters and setters allow us to implement a better encapsulation scheme
 """
 
-
 print("-".center(50, "-"))
+
+
 class Student:
-	def __init__(self, name):
-		self.__name = name
+    def __init__(self, name):
+        self.__name = name
 
-	@property  # a getter
-	def name(self):
-		return self.__name
+    @property  # a getter
+    def name(self):
+        return self.__name
 
-	@name.setter  # a setter - note the name is the same as defined under @property above!
-	def name(self, value):
-		self.__name = value
+    @name.setter  # a setter - note the name is the same as defined under @property above!
+    def name(self, value):
+        self.__name = value
+
 
 student = Student('Alice')
 

@@ -57,7 +57,7 @@ sshclient.set_missing_host_key_policy(paramiko.WarningPolicy())  # What to do if
 
 # sshclient.connect(hostname="to05xl.to.infn.it", username="krys", look_for_keys=False, pkey=key)
 sshclient.connect(hostname="to05xl.to.infn.it", username="krys", look_for_keys=False, pkey=key,
-				  disabled_algorithms={'pubkeys': ['rsa-sha2-256', 'rsa-sha2-512']})  # required if RSA
+                  disabled_algorithms={'pubkeys': ['rsa-sha2-256', 'rsa-sha2-512']})  # required if RSA
 
 stdin, stdout, stderr = sshclient.exec_command('pwd')
 remote_main_dir = stdout.readline().splitlines()[0]
