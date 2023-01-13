@@ -11,13 +11,11 @@ https://www.programiz.com/python-programming/methods/built-in/filter
 
 numbers = range(11)
 
-
 def test_even(n):  # Create the test condition
     if n % 2 == 0:
         return True
     else:
         return False
-
 
 even_iterators = filter(test_even, numbers)  # returns an iterator
 even_list = list(even_iterators)  # convert iterator to a list
@@ -27,10 +25,8 @@ print(even_list)
 
 my_string = 'This is some test string'.lower()
 
-
 def test_letters(letter):
     return True if letter > 'k' else False  # True if a letter occurs after 'k'
-
 
 after_k = list(filter(test_letters, my_string))
 print(after_k)

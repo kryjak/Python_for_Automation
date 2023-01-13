@@ -9,7 +9,6 @@ context.
 https://www.programiz.com/python-programming/operator-overloading
 """
 
-
 class Complex:
     def __init__(self, real, imag):
         self.real = real
@@ -19,7 +18,6 @@ class Complex:
     def __add__(self, other):
         return self.real + other.real, self.imag + other.imag
 
-
 obj1 = Complex(1, 2)
 obj2 = Complex(3, 4)
 obj3 = obj1 + obj2
@@ -28,7 +26,6 @@ print(obj3)
 print(obj4)
 
 print("-".center(50, "-"))
-
 
 # The example above is fairly useless, but we can think of something more realistic.
 # For example, we can overload the comparison operator < such that it can compare objects in user-defined classes:
@@ -40,7 +37,6 @@ class Person:
 
     def __lt__(self, other):
         return self.age < other.age
-
 
 young = Person('Mike', 25)
 old = Person('Peter', 60)

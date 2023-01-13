@@ -47,7 +47,6 @@ for it in iter(my_list):  # needed to create a new iterator because my_iterator 
 
 print("CUSTOM ITERATORS".center(50, "-"))
 
-
 # We can also create a custom iterator from scratch:
 
 class MyIterator:
@@ -74,7 +73,6 @@ class MyIterator:
             return result
         else:
             raise StopIteration
-
 
 # numbers = MyIterator(3, 10, 1)
 numbers = MyIterator(3, 10, 2)

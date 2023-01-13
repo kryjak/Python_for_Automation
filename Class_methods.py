@@ -5,8 +5,8 @@ Any method we create in a class will automatically be created as an instance met
 that it is a class or static method.
 
 A class method can be created by either using:
-1. classmethod() function
-2. @classmethod decorator - used to create factory methods, i.e. methods that return a class object for later use
+1. classmethod() function - not recommended
+2. @classmethod decorator
  
 In either case, the first argument should be 'cls', as opposed to 'self' for instance methods.
 
@@ -16,7 +16,6 @@ class inherits its methods and attributes.
 https://www.programiz.com/python-programming/methods/built-in/classmethod
 https://pynative.com/python-class-method/
 """
-
 
 class Person:
     species = 'human'
@@ -32,7 +31,6 @@ class Person:
     def change_species(cls, new_species):
         cls.species = new_species
 
-
 Person.print_species()
 
 john = Person('John')  # we can also call the class method from the instance
@@ -40,11 +38,9 @@ john.print_species()
 
 print("-".center(20, "-"))
 
-
 # we can also convert a method to a class method post-factum, but this is not nice syntax, so avoid using it
 def print_species2(cls):  # note the argument is cls, but in theory we can use anything else
     print('The species2 is:', cls.species)
-
 
 Person.print_species2 = classmethod(print_species2)
 Person.print_species2()
@@ -66,12 +62,10 @@ delattr(Person, 'nlegs')  # same as del Person.nlegs
 
 print("inheritance".center(20, "-"))
 
-
 # class methods get inherited by the children of the class:
 
 class Man(Person):
     gender = 'male'
-
 
 man = Man('Mike')
 man.print_species()  # inherited from Person
@@ -80,7 +74,6 @@ print("FACTORY METHODS".center(50, "-"))
 # We can use the @classmethod to create a 'factory method' - a method that returns an object of this class
 
 from datetime import date
-
 
 class Person:
     species = 'human'
@@ -96,7 +89,6 @@ class Person:
     def display(self):
         print(self.name + "'s age is: " + str(self.age))
 
-
 # create an instance in the usual way
 person = Person('Adam', 19)
 person.display()
@@ -107,12 +99,10 @@ person1.display()
 
 print("inheritance".center(20, "-"))
 
-
 # factory methods are also understood in inheritance
 
 class Woman(Person):
     gender = 'female'
-
 
 woman = Woman.from_birth_year('Claudia', 1976)  # inherited from Person
 woman.display()

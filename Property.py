@@ -15,7 +15,6 @@ But their name must be different to the attribute instantiated by __init__.
 https://stackoverflow.com/a/17395735
 """
 
-
 class Student:
     def __init__(self, name, surname):
         self.name = name
@@ -34,7 +33,6 @@ class Student:
     def set_name_and_fullname(self, value):  # a traditional method to modify the name
         self.name = value
         self.fullname = value + ' ' + self.surname
-
 
 student = Student('Monica', 'Smith')
 print(student.fullname)  # access the name using the attribute
@@ -84,7 +82,6 @@ For that purpose, we use a @property decorator.
 
 print("-".center(50, "-"))
 
-
 class Student:
     def __init__(self, name, surname):
         self.name = name
@@ -106,7 +103,6 @@ class Student:
         print('Deleting name!')
         self.name, self.surname = None, None
     # del self.name
-
 
 # create a new Student object
 student = Student("Mark", "Corrigan")

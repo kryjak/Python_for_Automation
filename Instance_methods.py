@@ -20,7 +20,6 @@ https://pynative.com/python-instance-methods/#h-create-instance-variables-in-ins
 
 print("INSTANCE METHODS".center(50, "-"))
 
-
 class Student:
     subject = 'Physics'  # class attribute
 
@@ -49,7 +48,6 @@ class Student:
     # instance method to add instance variable
     def add_marks(self, marks):
         self.marks = marks
-
 
 mary = Student('Mary', 22)
 
@@ -86,12 +84,10 @@ print('instance age:', mary.age)
 
 print("-".center(10, "-"))
 
-
 # We can dynamically create a method associated with an object:
 
 def inst_method(self):
     print('This method is associated with the instance.')
-
 
 mary.instance_method = types.MethodType(inst_method, mary)  # note the syntax - method is tied to 'mary' object
 mary.instance_method()

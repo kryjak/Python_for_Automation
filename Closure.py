@@ -8,13 +8,11 @@ For a more step-by-step explanation, see First_class_functions.py
 https://www.youtube.com/watch?v=swU3c34d2NQ&ab_channel=CoreySchafer
 """
 
-
 def f1(n):
     def mod(modulus):
         print(n % modulus)
 
     return mod  # mod, NOT mod() as we want to assign the function itself, not its execution
-
 
 check5 = f1(5)  # check5 is now equivalent to mod with n being 5 - we can call it
 print(check5.__name__)
@@ -29,7 +27,6 @@ check6(3)
 
 print("-".center(50, "-"))
 
-
 # Another example:
 
 def calculate():
@@ -41,7 +38,6 @@ def calculate():
         return num
 
     return inner_func
-
 
 """
 The nonlocal keyword is used to work with variables inside nested functions, where the variable we are

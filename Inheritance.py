@@ -1,6 +1,5 @@
 print("TRIANGLE-".center(50, "-"))
 
-
 # Another simple example - a Triangle class to calculate the perimeter of a triangle:
 
 class Triangle:
@@ -12,7 +11,6 @@ class Triangle:
     def perimeter(self):
         print('Calculating the perimeter in Triangle.')
         return sum(self.sides)
-
 
 tri1 = Triangle([3, 4, 5])
 perimeter = tri1.perimeter()
@@ -27,14 +25,12 @@ Btw, in PyCharm we can click Shift+F11 to view the bookmarks, Ctrl+B to jump to 
 jump to class definition.
 """
 
-
 class Square:
     def __init__(self, a):
         self.a = a
 
     def perimeter(self):
         return 4 * self.a
-
 
 square1 = Square(3)
 perimeter = square1.perimeter()
@@ -52,12 +48,10 @@ https://www.programiz.com/python-programming/inheritance
 """
 import math  # to have sqrt below
 
-
 class EquilateralTriangle(Triangle):
     def area(self):
         print('Calculating area in EquilateralTriangle')
         return round(self.sides[0] ** 2 * math.sqrt(3) / 4, 5)
-
 
 equitri = EquilateralTriangle([7, 7, 7])
 perimeter = equitri.perimeter()
@@ -79,7 +73,6 @@ methods of the base class.
 https://www.programiz.com/python-programming/methods/built-in/super
 """
 
-
 class EquilateralTriangle2(Triangle):
     # overrides perimeter() from the Triangle parent class
     def perimeter(self):
@@ -92,7 +85,6 @@ class EquilateralTriangle2(Triangle):
     def area(self):
         print('Calculating area in EquilateralTriangle2')
         return round(self.sides[0] ** 2 * math.sqrt(3) / 4, 5)
-
 
 equitri = EquilateralTriangle2([7, 7, 7])
 perimeter = equitri.perimeter()  # now the updated formula is being used
@@ -116,16 +108,13 @@ of the object class.
 https://www.programiz.com/python-programming/multiple-inheritance
 """
 
-
 class Polygon:
     def statement(self):
         print('I am a polygon.')
 
-
 # this child class inherits __init__() and perimeter() from Triangle, as well as statement() from Polygon:
 class EquilateralTriangle3(Triangle, Polygon):
     print('I am an EquilateralTriangle3 object.')
-
 
 multitri = EquilateralTriangle3([7, 7, 7])
 multitri.statement()
@@ -142,7 +131,6 @@ In the examples below, both EquilateralTriangle and EquilateralTriangle2 are chi
 Note: super() moves up one level, not all the way to the highest superclass.
 """
 
-
 # this child class inherits __init__() from Triangle, but perimeter() is overridden by the one in EquilateralTriangle2
 # Note that area() is inherited from EquilateralTriangle, not EquilateralTriangle2, because it comes first.
 class EquilateralTriangle3(EquilateralTriangle, EquilateralTriangle2):
@@ -153,7 +141,6 @@ class EquilateralTriangle3(EquilateralTriangle, EquilateralTriangle2):
 
     def perimeter2(self):
         return super().old_perimeter()
-
 
 multitri = EquilateralTriangle3([7, 7, 7])
 multitri.perimeter()  # inherited from EquilateralTriangle2
@@ -168,10 +155,8 @@ print('__mro__:', EquilateralTriangle3.__mro__)
 # Same as above, but now area is inherited from EquilateralTriangle2
 print("-".center(10, "-"))
 
-
 class EquilateralTriangle3(EquilateralTriangle2, EquilateralTriangle):
     print('I am an EquilateralTriangle3 object.')
-
 
 multitri = EquilateralTriangle3([7, 7, 7])
 multitri.area()

@@ -15,7 +15,6 @@ replaced with _ChildClass__var.
 But we can easily access even such private variable on the outside, using the mangled name: _ClassName__var.
 """
 
-
 class Secret:
     def __init__(self, lvl, rcp):
         self.secret = 'This is a secret message.'
@@ -25,13 +24,13 @@ class Secret:
     def get_secrecy_lvl(self):
         return 'The secrecy level is ' + str(self.__secrecy_level)
 
-
 class Recipient(Secret):  # this class doesn't really make sense, but ok, just to demonstrate encapsulation
     def __init__(self, lvl, rcp):
         super().__init__(lvl, rcp)
 
     def recipient_list(self):
         return self._recipient
+
 # return self.__secrecy_level  # does not work
 # return self._Secret__secrecy_level  # works because we have used the mangled name of the private var
 
@@ -63,7 +62,6 @@ Getters and setters allow us to implement a better encapsulation scheme
 
 print("-".center(50, "-"))
 
-
 class Student:
     def __init__(self, name):
         self.__name = name
@@ -75,7 +73,6 @@ class Student:
     @name.setter  # a setter - note the name is the same as defined under @property above!
     def name(self, value):
         self.__name = value
-
 
 student = Student('Alice')
 

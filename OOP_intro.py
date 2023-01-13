@@ -11,7 +11,6 @@ In OOP, attributes and methods of an object are grouped together in a template/b
 Then, we can create any desired number of objects from that class (known as instances).
 """
 
-
 # Define a class
 class Bike:
     price = 'Expensive!'
@@ -21,7 +20,6 @@ class Bike:
 
     def gear_ratio(self):
         return round(self.chainring[0] / self.casette[0], 1), round(self.chainring[0] / self.casette[-1], 1)
-
 
 """
 Whenever we define a function within a class, we need to supply 'self' as the first argument.
@@ -85,7 +83,6 @@ https://www.programiz.com/python-programming/class-object
 https://www.geeksforgeeks.org/constructors-in-python/
 """
 
-
 class Bike:
     price = 'Expensive!'  # The attribute outside the constructor is global to the class
 
@@ -100,7 +97,6 @@ class Bike:
 
     def gear_ratio(self):
         return round(self.chainring[0] / self.casette[0], 1), round(self.chainring[0] / self.casette[-1], 1)
-
 
 # Instantiation - note we now have to provide the arguments within the constructor:
 bike1 = Bike("Road Bike", [54], [11, 34])
@@ -126,7 +122,6 @@ except AttributeError as e:
 
 print("-".center(50, "-"))
 
-
 # A small example - addition of complex numbers:
 class Complex:
     count = 0
@@ -139,7 +134,6 @@ class Complex:
     def addition(self, n2):
         return Complex(self.re + n2.re, self.im + n2.im)  # the return can be an object of the same class
 
-
 n1 = Complex(3, 4)
 n2 = Complex(5, 2)
 n3 = n1.addition(n2)
@@ -149,7 +143,6 @@ print(f'imag: {n3.im}')
 print(f'Created {Complex.count} instances of class Complex.')
 
 print("TRIANGLE-".center(50, "-"))
-
 
 # Another simple example - a Triangle class to calculate the perimeter of a triangle:
 
@@ -162,7 +155,6 @@ class Triangle:
     def perimeter(self):
         print('Calculating the perimeter in Triangle.')
         return sum(self.sides)
-
 
 tri1 = Triangle([3, 4, 5])
 perimeter = tri1.perimeter()
@@ -190,7 +182,6 @@ The destructor is called whenever the program ends or all references to an objec
 https://pynative.com/python-destructor/
 """
 
-
 class Employee:
 
     # Constructor
@@ -200,7 +191,6 @@ class Employee:
     # Destructor
     def __del__(self):
         print('Employee destroyed.')
-
 
 obj = Employee()
 obj2 = obj  # Creates a new reference to the same object
@@ -218,7 +208,6 @@ ob3 = Employee()
 
 print("CIRCULAR REFERENCES".center(30, "-"))
 
-
 # Understanding circular references:
 
 class Vehicle:
@@ -231,7 +220,6 @@ class Vehicle:
     def __del__(self):
         print('Vehicle', self.brand, 'destroyed')
 
-
 class Car:
     def __init__(self, brand):
         self.brand = brand
@@ -242,7 +230,6 @@ class Car:
 
     def __del__(self):
         print('Car', self.brand, 'destroyed')
-
 
 bmw = Car('BMW')
 
@@ -259,7 +246,6 @@ print('Will be destroyed at end of program.')
 
 print("ERROR IN __init__()".center(30, "-"))
 
-
 # Error in __init__():
 class Car:
     def __init__(self, brand):
@@ -272,7 +258,6 @@ class Car:
 
     def __del__(self):
         print('Car', self.brand, 'destroyed')
-
 
 bmw = Car('BMW')
 del bmw  # nothing happens unless we uncomment the except line above

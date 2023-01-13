@@ -13,26 +13,22 @@ be iterated over at a later time.
 'yield' produces a value but then pauses the execution until the next value is requested.
 """
 
-
 def fun(n):
     i = 0
     while i <= n:
         print(i)
         i += 1
 
-
 fun(5)
 
 # Now do the same using a generator:
 print("-".center(10, "-"))
-
 
 def generator(n):
     i = 0
     while i <= n:
         yield i
         i += 1
-
 
 my_gen = generator(5)
 print(type(my_gen))
@@ -56,11 +52,9 @@ Just like we can create an infinite iterator (e.g. using itertools.count(n), whe
 create an infinite generator:
 """
 
-
 def infinite_generator():
     while True:
         yield 0
-
 
 inf_gen = infinite_generator()
 print(next(inf_gen))
