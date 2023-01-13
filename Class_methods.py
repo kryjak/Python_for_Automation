@@ -61,8 +61,7 @@ setattr(Person, 'nlegs', 2)  # same as Person.nlegs = 2
 print('nlegs:', Person.nlegs)
 
 # We can also dynamically delete the attribute:
-# delattr(Person, 'nlegs')  # either of these two lines will work
-del Person.nlegs
+delattr(Person, 'nlegs')  # same as del Person.nlegs
 # print('nlegs:', Person.nlegs)  # AttributeError
 
 print("inheritance".center(20, "-"))
@@ -117,3 +116,4 @@ class Woman(Person):
 
 woman = Woman.from_birth_year('Claudia', 1976)  # inherited from Person
 woman.display()
+print(woman.__class__)  # prints Woman, not Person
