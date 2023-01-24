@@ -98,8 +98,8 @@ print(f'The area of equitri is ~ {area}.')
 print("MULTIPLE INHERITANCE".center(50, "-"))
 """
 Multiple inheritance - a child class can have more than one superclass.
-Note: in case of polymorphic methods, the method from the class on the left always takes precendence over the method 
-from the classes on the right, i.e. here some 'my_method' from Triangle would have precendence over 'my_method' from 
+Note: in case of polymorphic methods, the method from the class on the left always takes precedence over the method 
+from the classes on the right, i.e. here some 'my_method' from Triangle would have precedence over 'my_method' from 
 Polygon. We can view the inheritance structure using the __mro__ attribute (returns tuple) or mro() method (returns 
 list) - Method Resolution Order.
 Note: Every class in Python is derived from the object class. It is the most base type in Python.

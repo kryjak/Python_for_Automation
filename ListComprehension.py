@@ -117,7 +117,7 @@ new_price = {key: (value * 1.5 if value > 2 else value) for (key, value) in old_
 print(new_price)
 
 """
-Final note - we have seen list/set/dictionary comprehension, but not tuple comprehension Why is that?
+Final note - we have seen list/set/dictionary comprehension, but not tuple comprehension. Why is that?
 Well, the ( ) brackets were already taken for a generator expression.
 Ironically, we can use a generator to generate such a tuple...
 tuple(ii for ii in range(1, 6))
