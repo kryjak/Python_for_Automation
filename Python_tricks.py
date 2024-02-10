@@ -31,3 +31,12 @@ if x or y or z:
 
 if any((x, y, z)):
     print('passed')
+
+print("GET ON A DICTIONARY".center(50, "-"))
+# get(self, key, default=None)
+# Return the value for key if key is in the dictionary, else default.
+
+dict1 = {'a': 1, 'b': 2}
+print(dict1.get('a'))  # key exists, so the corresponding value is returned
+print(dict1.get('c'))  # key doesn't exist
+print(dict1.get('c', 'Default'))  # key doesn't exist, return the default value
